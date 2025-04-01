@@ -4,7 +4,7 @@ import { Message } from "../models/messageModel.js";
 export const initializeSocket = (server) => {
     const io = new Server(server, {
         cors: {
-            origin: "http://localhost:3000",
+            origin: "https://vitejsvitenbptq6hq-nnwh--5173--33edf5bb.local-credentialless.webcontainer.io/",
             credentials: true,
         },
     });
