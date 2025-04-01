@@ -38,7 +38,11 @@ app.use(
 );
 
 app.use(express.json()); // to parse req.body
-app.use(clerkMiddleware()); // this will add auth to req obj => req.auth
+try {
+	app.use(clerkMiddleware());  // this will add auth to req obj => req.auth
+} catch (err) {
+	console.error("Clerk Middleware Error:", err.message);
+}
 app.use(
 	fileUpload({
 		useTempFiles: true,
