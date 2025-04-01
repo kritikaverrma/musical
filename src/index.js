@@ -93,7 +93,7 @@ if (process.env.NODE_ENV === "production") {
 //middlewareFunction - The function that executes when a request is received
 
 app.use((err, req, res, next) => {
-	res.status(500).json({ message: process.env.NODE_ENV === "production" ? "Internal server error" : err.message });
+	res.status(500).json({ message: err.message });
 });
 
 httpServer.listen(PORT, () => {
