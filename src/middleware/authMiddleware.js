@@ -3,6 +3,7 @@ import { getAuth } from "@clerk/express";
 
 
 export const protectRoute = async (req, res, next) => {
+    console.log("req at protectRoute", req);
     const auth = getAuth(req); // Extract auth manually
     console.log("Manual Auth:", auth);
     if (!auth.userId) {
