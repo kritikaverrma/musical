@@ -1,10 +1,15 @@
 import { clerkClient } from "@clerk/express";
+import { getAuth } from "@clerk/express";
+
 
 export const protectRoute = async (req, res, next) => {
-    console.log("Auth Data:", req.auth); // Debugging log
-    if (!req.auth || !req.auth.userId) {
+    const auth = getAuth(req); // Extract auth manually
+    console.log("Manual Auth:", auth);
+    if (!auth.userId) {
         return res.status(401).json({ message: "Unauthorized - you must be logged in" });
     }
+
+    req.auth = auth; // Assign manually if missing
     next();
 };
 
