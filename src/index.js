@@ -71,7 +71,7 @@ cron.schedule("0 * * * *", () => {
 	}
 });
 
-app.use(clerkMiddleWare());
+app.use(clerkMiddleware());
 
 app.use("/api/users", userRoutes);
 app.use("/api/admin", adminRoutes);
