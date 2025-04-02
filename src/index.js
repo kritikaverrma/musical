@@ -30,7 +30,7 @@ const PORT = process.env.PORT;
 const httpServer = createServer(app);
 initializeSocket(httpServer);
 
-app.set("trust proxy", 1);
+
 
 app.use(
 	cors({
