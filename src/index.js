@@ -39,6 +39,9 @@ app.use(
 	})
 );
 
+app.options("*", cors()); // Handle pre-flight requests globally
+
+
 app.use(express.json()); // to parse req.body
 
 app.use(
