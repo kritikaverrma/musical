@@ -34,7 +34,7 @@ initializeSocket(httpServer);
 
 app.use(
 	cors({
-		origin: "*",
+		origin: "https://vitejsvitenbptq6hq-nnwh--5173--33edf5bb.local-credentialless.webcontainer.io/",
 		credentials: true,
 		methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
