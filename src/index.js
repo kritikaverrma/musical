@@ -38,7 +38,7 @@ app.use(
   "https://vitejsvitenbptq6hq-nnwh--5173--33edf5bb.local-credentialless.webcontainer.io",
   "http://localhost:5173" 
 			// Add more if needed
-];,
+],
 		credentials: true,
 		methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
