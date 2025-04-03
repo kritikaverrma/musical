@@ -30,28 +30,27 @@ const PORT = process.env.PORT;
 const httpServer = createServer(app);
 initializeSocket(httpServer);
 
-
+const allowedOrigins = [
+  "https://vitejsvitenbptq6hq-nnwh--5173--33edf5bb.local-credentialless.webcontainer.io",
+  "http://localhost:5173"
+];
 
 app.use(
-	cors({
-		origin: [
-  "https://vitejsvitenbptq6hq-nnwh--5173--33edf5bb.local-credentialless.webcontainer.io",
-  "http://localhost:5173" 
-			// Add more if needed
-],
-		credentials: true,
-		methods: 'GET,POST,PUT,DELETE',
-    allowedHeaders: 'Content-Type,Authorization',
-	})
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, origin);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
 );
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", req.headers.origin); // Dynamic origin
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-  next();
-});
+
 
 
 app.options("*", cors()); // Handle pre-flight requests globally
